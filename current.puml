@@ -1,0 +1,67 @@
+@startuml
+
+left to right direction
+
+rectangle Openbaar {
+    rectangle "publiek/openbaar" {
+        actor jeugd
+        actor senior
+        actor jongeren
+
+        usecase "kalender bekijken"
+        usecase "hoe wordt ik lid"
+        usecase "nieuws bekijken"
+        usecase "bewakinginformatie opzoeken"
+    }
+
+    rectangle "Zakelijk" {
+        actor "evenement organisatie" as organisatie
+        usecase "bewakingskalender bekijken"
+        usecase "bewakingsnieuws bekijken"
+        usecase "bewakinginformatie opzoeken"
+    }
+
+    rectangle "Verenigingsinformatie" {
+        usecase "Wie zijn we"
+        usecase "historie bekijken"
+    }
+
+    rectangle "Documenten" {
+        usecase "Inschrijfformulier"
+        usecase "Reglementen(ER etc)"
+        usecase "Huishoudelijk reglement"
+    }
+}
+rectangle Inlog {
+    rectangle "Openbare Ledeninformatie" {
+        usecase "intern kalender bekijken"
+        usecase "intern nieuws bekijken"
+        usecase "eigen gegevens aanpassen"
+        usecase "dropbox bekijken"
+        usecase "beschikbaarheid bewakingen aanpassen"
+    }
+
+    rectangle "Documenten(Revisie van actualiteit documenten)" {
+        usecase "Declaratieformulier"
+        usecase "ALV documenten"
+        usecase "Formulier Gezondheidverklaring"
+        usecase "Statuten"
+    }
+
+    rectangle "Instructeur" {
+        usecase "beschikaarheid aangeven"
+        usecase "badindeling bekijken"
+    }
+
+    rectangle "Administratie" {
+        usecase "ledenlijst bevoegdheden"
+        usecase "ledenlijst diplomas"
+    }
+
+    rectangle "Minder belangrijke ledeninformatie" {
+        usecase "ledenlijst bekijken<<AVG Risk>>"
+    }
+}
+
+
+@enduml
