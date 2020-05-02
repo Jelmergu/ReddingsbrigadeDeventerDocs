@@ -1,0 +1,118 @@
+@startuml
+left to right direction
+
+actor jeugd
+actor senior
+actor jongeren
+actor "evenement organisatie" as organisatie
+actor "niet leden" as nl
+
+actor "ingelogde leden" as leden
+actor instructeur
+actor bestuurslid
+actor commissielid
+
+rectangle Openbaar {
+    rectangle "publiek/openbaar" {
+        usecase "kalender bekijken"
+        usecase "hoe wordt ik lid"
+        usecase "nieuws bekijken"
+        usecase "bewakinginformatie opzoeken"
+    }
+
+    rectangle "Zakelijk" {
+        usecase "bewakingskalender bekijken"
+        usecase "bewakingsnieuws bekijken"
+        usecase "bewakinginformatie opzoeken"
+    }
+
+    rectangle "Verenigingsinformatie" {
+        usecase "Wie zijn we"
+        usecase "historie bekijken"
+    }
+
+    rectangle "Documenten" {
+        usecase "Inschrijfformulier"
+        usecase "Reglementen[ER etc]"
+        usecase "Huishoudelijk reglement"
+    }
+}
+rectangle Inlog {
+    rectangle "Openbare Ledeninformatie" {
+        usecase "intern kalender bekijken"
+        usecase "intern nieuws bekijken"
+        usecase "eigen gegevens aanpassen"
+        usecase "dropbox bekijken"
+        usecase "beschikbaarheid bewakingen aanpassen"
+    }
+
+    rectangle "Niet openbare documenten" {
+        usecase "Declaratieformulier"
+        usecase "ALV documenten"
+        usecase "Formulier Gezondheidverklaring"
+        usecase "Statuten"
+    }
+
+    rectangle "Instructeur" {
+        usecase "beschikaarheid aangeven"
+        usecase "badindeling bekijken"
+    }
+
+    rectangle "Administratie" {
+        usecase "ledenlijst bevoegdheden"
+        usecase "ledenlijst diplomas"
+    }
+
+    rectangle "Minder belangrijke ledeninformatie" {
+        usecase "ledenlijst bekijken<<AVG Risk>>"
+    }
+}
+
+organisatie -- (bewakingskalender bekijken)
+organisatie -- (bewakingsnieuws bekijken)
+organisatie -- (bewakinginformatie opzoeken)
+
+nl -- (kalender bekijken)
+nl -- (hoe wordt ik lid)
+nl -- (nieuws bekijken)
+nl -- (bewakinginformatie opzoeken)
+nl -- (Wie zijn we)
+nl -- (historie bekijken)
+
+leden --u-- (kalender bekijken)
+leden --u-- (nieuws bekijken)
+leden --u-- (bewakinginformatie opzoeken)
+leden --u-- (bewakingskalender bekijken)
+leden --u-- (bewakingsnieuws bekijken)
+leden --u-- (bewakinginformatie opzoeken)
+leden --u-- (Reglementen[ER etc])
+leden --u-- (Huishoudelijk reglement)
+leden --d-- (intern kalender bekijken)
+leden --d-- (intern nieuws bekijken)
+leden --d-- (eigen gegevens aanpassen)
+leden --d-- (dropbox bekijken)
+leden --d-- (beschikbaarheid bewakingen aanpassen)
+leden --d-- (Declaratieformulier)
+leden --d-- (ALV documenten)
+leden --d-- (Formulier Gezondheidverklaring)
+leden --d-- (Statuten)
+leden ..d.. (ledenlijst bekijken<<AVG Risk>>)
+
+instructeur -u- (beschikaarheid aangeven)
+instructeur -u- (badindeling bekijken)
+
+bestuurslid -u- (ledenlijst bevoegdheden)
+bestuurslid -u- (ledenlijst diplomas)
+
+actor instructeur
+actor bestuurslid
+actor commissielid
+@enduml
+
+Ledenlijst qualificatie
+wie mag wat zien van de ledenlijst
+
+mail sturen aan groep vanuit website
+naar alle senioren bijv.
+
+Documenten moeten geupdate worden naar de nieuwste versies
