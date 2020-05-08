@@ -1,4 +1,7 @@
 @startuml
 
-class helloWorld
+class helloWorld {
+    +test
+    +tes
+}
 @enduml
