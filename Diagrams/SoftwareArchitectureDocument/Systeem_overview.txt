@@ -1,6 +1,0 @@
-@startuml
-
-class helloWorld {
-    +test
-}
-@enduml

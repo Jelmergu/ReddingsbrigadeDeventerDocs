@@ -1,7 +1,15 @@
 @startuml
 
-class helloWorld {
-    +test
-    +tes
+node browser
+node server {
+    artifact website {
+        component core
+
+    }
+    database database
 }
+
+
+
+
 @enduml
