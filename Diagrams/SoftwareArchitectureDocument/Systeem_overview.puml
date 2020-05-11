@@ -4,12 +4,16 @@ node browser
 node server {
     artifact website {
         component core
+        component modules
 
     }
     database database
 }
 
-
+browser -- core
+core -- modules
+core -- database
+modules -l- database
 
 
 @enduml
