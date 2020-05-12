@@ -23,6 +23,13 @@ In dit document staan het architectureel ontwerp van de website van Reddingsbrig
 ![Systeem overview]
 
 ## Systeem onderdelen
+| Systeemonderdeel | Omschrijving |
+| --- | --- | 
+| Browser | Dit is de browser van de client. Hierin wordt de website weergegeven. |
+| Server | De server host de website en bijbehorende database |
+| Website | De website bestaat uit een core en meerdere modules. |
+| Core | De core van de website bevat de onderdelen welke door alle modules gebruikt kunnen worden. Modules registreren bij de core op welke manier zij aangeroepen kunnen worden. De core zorgt voor het opzetten en opvragen van de verbinding met de database. |
+| Modules | De verschillende modules van het systeem. Een module kan een breed scala aan functies uitvoeren op de website. Modules zijn afhankelijk van de core, en kunnen zelf ook afhankelijk zijn van enkele andere modules. |
 
 # Stakeholders en Concerns
 
