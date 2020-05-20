@@ -1,0 +1,30 @@
+@startuml
+
+hide empty members
+hide circle
+
+skinparam class {
+    BackgroundColor<<Decided>> #028A0F
+    BackgroundColor<<Rejected>> #E3242B
+}
+
+!procedure decided($name, $description)
+class $name <<Decided>>  {
+    $description
+}
+!endprocedure
+
+!procedure rejected($name, $description)
+class $name <<Rejected>>  {
+    $description
+}
+!endprocedure
+
+
+
+class Language
+decided("PHP", "PHP 7.4 wordt gebruikt als taal om\nde applicatie in te schrijven")
+
+Language -- PHP
+
+@enduml
