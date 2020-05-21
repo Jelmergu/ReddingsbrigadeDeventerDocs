@@ -65,8 +65,9 @@ prioriteit aanduid en 10 hoge prioriteit
 
 | ASR Code | QA | Omschrijving |
 |---|---|---|
-| ASR-1 | Testability  | Applicatie moet testbaar zijn |
-|  |  |  |
+| ASR-1 | Testability | Applicatie moet testbaar zijn |
+| ASR-2 | Co-existence | De applicatie moet kunnen werken op de bestaande server van RBD |
+| ASR-3 | Interoperability | De applicatie moet data kunnen uitwisselen met het huidige systeem voor zolang de functionaliteiten van het huidige systeem nog niet zijn opgenomen in het nieuwe systeem |
 
 ## High-level Use Cases
 
@@ -92,8 +93,15 @@ prioriteit aanduid en 10 hoge prioriteit
 ## Decision Forces View
 
 ### Programmeertaal
-| | |
-
+| Code | Description | Prioriteit | PHP | NodeJS | Java |
+| --- | --- | --- | --- | --- | --- | 
+| ASR-2 | De applicatie moet kunnen werken op de bestaande server van RBD | Hoog | ++ | + | \ | 
+| ASR-3 | De applicatie moet data kunnen uitwisselen met het huidige systeem voor zolang de functionaliteiten van het huidige systeem nog niet zijn opgenomen in het nieuwe systeem | Hoog | ++ | + | + |
+#### Legenda
+| Code | -- | - | 0 | + | ++ | \ |  
+| --- | --- | --- | --- | --- | --- | --- | 
+| ASR-2 | De taal kan niet werken op de server | De taal zou met heel veel moeite kunnen werken op de server | De taal kan werken op de server, maar een programma moet nog geinstalleerd worden | Een of twee instellingen moeten aangepast worden om de taal te laten werken op de server | De taal draait al op de server | Onbekend en niet naar gekeken |
+| ASR-3 | n.v.t | De taal kan niet uitwisselen met het huidige systeem | De taal kan wel uitwisselen met het huidige systeem, maar kost veel moeite | De taal kan uitwisselen met het systeem | De taal wordt ook voor het huidige systeem gebruikt | n.v.t |  
 
 ## Decision detail View
 | Naam | Programmeertaal |
@@ -102,11 +110,11 @@ prioriteit aanduid en 10 hoge prioriteit
 | Status | Decided |
 | Probleem/Issue | In welke taal gaat de applicatie geschreven worden |
 | Decision | PHP 7.4 |
-| Alternatives | none |
-| Argumenten | | 
+| Alternatives | NodeJS<br>Java |
+| Argumenten |  | 
 | Gerelateerde beslissingen | |
 | Gerelateerde vereisten | |
-| Geschiedenis | 2020-05-20 PHP 7.4 besloten | 
+| Geschiedenis | 2020-05-20 PHP 7.4 besloten |
 
 # References 
 

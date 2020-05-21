@@ -22,9 +22,9 @@ class $name <<Rejected>>  {
 
 
 
-class Language
+class Programmeertaal
 decided("PHP", "PHP 7.4 wordt gebruikt als taal om\nde applicatie in te schrijven")
 
-Language -- PHP
+Programmeertaal <-- PHP
 
 @enduml
