@@ -1,0 +1,47 @@
+@startuml
+left to right direction
+
+actor Bestuur
+actor Penningmeester
+actor Commissie
+actor Lid
+actor Externe
+
+rectangle Systeem {
+    usecase "Website beheren"
+    usecase "Lid inschrijven"
+    usecase "Bewaking aanvragen"
+    usecase "Bewakingen indelen"
+    usecase "Kalender beheren"
+    usecase "Kalender bekijken"
+    usecase "Nieuws beheren"
+    usecase "Nieuws bekijken"
+    usecase "Gegevens beheren"
+    usecase "Gegevens bekijken"
+    usecase "Boekhouding beheren"
+    usecase "Boekhouding bekijken"
+}
+
+Bestuur -u- (Boekhouding bekijken)
+Bestuur -u- (Gegevens beheren)
+Bestuur -u- (Website beheren)
+Bestuur -u- (Kalender beheren)
+Bestuur -u- (Nieuws beheren)
+Bestuur -u- (Lid inschrijven)
+
+Penningmeester -- (Boekhouding beheren)
+
+Commissie -- (Kalender beheren)
+Commissie --  (Nieuws beheren)
+Commissie -- (Bewakingen indelen)
+
+Lid -- (Gegevens bekijken)
+Lid -- (Kalender bekijken)
+Lid -- (Nieuws bekijken)
+
+Externe -- (Lid inschrijven)
+Externe -- (Bewaking aanvragen)
+Externe -- (Kalender bekijken)
+Externe -- (Nieuws bekijken)
+
+@enduml

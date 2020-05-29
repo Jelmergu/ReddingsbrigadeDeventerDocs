@@ -32,10 +32,7 @@ In dit document staan het architectureel ontwerp van de website van Reddingsbrig
 | Modules | De verschillende modules van het systeem. Een module kan een breed scala aan functies uitvoeren op de website. Modules zijn afhankelijk van de core, en kunnen zelf ook afhankelijk zijn van enkele andere modules. |
 
 # Stakeholders en Concerns
-
 In dit hoofdstuk staan de partijen welke belang hebben bij het eindresultaat.
-
-
 ## Stakeholders
 
 | Code | Stakeholder | Omschrijving |
@@ -47,19 +44,41 @@ In dit hoofdstuk staan de partijen welke belang hebben bij het eindresultaat.
 | S4 | CBH | De CBH gebruikt de website als hulpmiddel om bewakingen te plannen en de juiste personen erbij indelen | 
 | S5 | Webmaster | De webmaster beheert de webite van de reddingsbrigade aan de backend. |
 | S6 | Lid | De leden kunnen via de website algemene informatie over de brigade vinden, zoals nieuws en de kalender. Tevens kunnen zij hier hun alle gegevens vinden die bij de reddingsbrigade bekend is |
-| S7 | Externen |  |
+| S7 | Externen | Externen kunnen via de website informatie krijgen over de brigade. Deze groep wordt opgesplitst bij het hoofstuk substakeholders. |
+
+### Substakeholders
+| Code | Stakeholder | Omschrijving |
+|---|---|---|
+| S7-A | Potentieel leden | Potentieel leden komen naar de website om informatie te krijgen over de brigade en over mogelijkheden om de sfeer te proeven. |
+| S7-B | Organisatoren | Organisatoren organiseren een evenement en willen de reddingsbrigade hier bij hebben om toezicht te bewaken. Dit kan zijn omdat dit nodig is voor een vergunning of om RBD informatie/voorlichting te laten geven |
+| S7-C |  | 
 
 ## Concerns
-In dit hoofstuk staan de verschillende concerns van de stakeholders. Deze worden geprioriteerd van 0 tot 10 waarbij 0 lage 
-prioriteit aanduid en 10 hoge prioriteit
+In dit hoofdstuk staan de verschillende concerns van de stakeholders. Deze worden geprioriteerd van 0 tot 10 waarbij 0 lage 
+prioriteit aanduidt en 10 hoge prioriteit
 
 | Code | Stakeholder code | Concern | Prioriteit | 
 | --- | --- | --- | --- |
-| C1 | S6 | Ik wil de gegevens over mij kunnen bekijken welke bij RBD bekend zijn | 10 |
+| C1 | S |  |  |
 | C2 | S5 | Ik wil kunnen zien wanneer er een fout optreed in de website, zodat ik hier snel op kan reageren | 5 |
 | C3 | S3 | Ik wil de content van de website kunnen aanpassen, zodat ik ervoor kan zorgen dat de website up to date blijft | 8 |
-| C4 | S5 | Ik wil dat de content van de website aangepast kan worden door anderen, zodat ik niet verantwoordelijk ben voor de content van de website | 8 |  
-
+| C4 | S5 | Ik wil dat de content van de website aangepast kan worden door anderen, zodat ik niet verantwoordelijk ben voor de content van de website | 8 |
+| C5 | S7-A | Ik wil informatie kunnen krijgen over RBD, zodat ik weet wat een reddingsbrigade inhoud | 8 |
+| C6 | S7-A | Ik wil een idee kunnen krijgen over de sfeer bij RBD, zodat ik weet of het bij mij past | 7 |
+| C7 | S7-B | Ik wil informatie kunnen krijgen over de beschikbaarheid van RBD, zodat ik weet of de RBD bij mijn evenement kan bewaken | 6 |
+| C8 | S7-B | Ik wil informatie kunnen krijgen over hoe ik RBD kan benaderen | 7 |
+| C9 | S4 | Ik wil een overzicht hebben van alle evenementen waar voor bewaakt moet worden, zodat ik boten en mensen kan indelen voor deze bewakingen | 4 |
+| C10 | S4 | Ik wil een overzicht hebben van alle mensen met hun kwalificaties en beschikbaarheid voor het bewaken bij evenementen, zodat ik de bewakers kan indelen bij evenementen | 4 |
+| C11 | S4 | Ik wil de bewakers kunnen inlichten over bewakingen waar zij op staan ingedeeld, zodat deze vlekkeloos kunnen verlopen | 4 |
+| C12 | S3 | Ik wil nieuws kunnen delen, zodat externen een idee krijgen over wat RBD doet | 5 |
+| C13 | S6 | Ik wil nieuws over de brigade kunnen zien, zodat ik op de hoogte kan blijven over wat er binnen de brigade zoal wordt gedaan | 5 |
+| C14 | S2 | Ik wil de ledenadministratie kunnen bijhouden en bijwerken, zodat het ledenbestand up to date blijf | 8 |
+| C15 | S2 | Ik wil de mogelijkheid hebben om de boekhouding te doen op de website | 7 |
+| C16 | S1 | Ik wil toegang hebben tot de boekhouding om de penningmeester te kunnen controleren | 8 |
+| C17 | S1 | Ik wil dat leden toegang hebben tot alle gegevens welke over zichzelf bekend zijn bij RBD, zodat de website aan de privacywetgeving voldoet | 10 |
+| C18 | S6 | Ik wil inzicht kunnen krijgen in de gegevens welke bij RBD bekend zijn over mij, zodat ik mijn eigen privacy kan beschermen | 10 |
+| C19 | S6 | Ik wil inzicht kunnen krijgen in de activiteiten van RBD welke er aan staan te komen, zodat ik op de hoogte ben van activiteiten waaraan ik misschien mee wil doen | 5 |
+   
 
 # Architectureel Significante Requirements
 
@@ -87,11 +106,41 @@ prioriteit aanduid en 10 hoge prioriteit
 
 ## Deployment View
 
+## Architecturele Beslissingen
+In dit hoofdstuk staan de verschillende architecturele beslissingen die zijn gemaakt om de website tot stand te kunnen brengen.
+
 ## Decision Relationship View
 ![Decision Relationship View]
 
-## Decision Forces View
+## Decision detail View
+| Naam | Programmeertaal |
+| --- | --- |
+| Versie | 1 |
+| Status | Decided |
+| Probleem/Issue | Voor het schrijven van een website zijn een aantal talen beschikbaar. Omdat het hier om een website gaat met veel functionaliteiten valt automatisch HTML af. |
+| Decision | PHP |
+| Alternatives | NodeJS<br>Java |
+| Argumenten | Op de huidige server draait al PHP 7.4 en het huidige systeem maakt ook gebruik van PHP 7.4. Hierdoor wordt het makkelijker om het oude systeem uit te faseren |
+| Gerelateerde beslissingen | - |
+| Gerelateerde vereisten | ASR-2<br>ASR-3 |
+| Geschiedenis | \[2020-05-20] PHP besloten |
 
+
+
+| Naam | Template |
+| --- | --- |
+| Versie | 1 |
+| Status | Decided |
+| Probleem/Issue | |
+| Decision |  |
+| Alternatives |  |
+| Argumenten |  |
+| Gerelateerde beslissingen | - |
+| Gerelateerde vereisten |  |
+| Geschiedenis | \[2020-]  |
+ 
+
+## Decision Forces View
 ### Programmeertaal
 | Code | Description | Prioriteit | PHP | NodeJS | Java |
 | --- | --- | --- | --- | --- | --- | 
@@ -103,21 +152,10 @@ prioriteit aanduid en 10 hoge prioriteit
 | ASR-2 | De taal kan niet werken op de server | De taal zou met heel veel moeite kunnen werken op de server | De taal kan werken op de server, maar een programma moet nog geinstalleerd worden | Een of twee instellingen moeten aangepast worden om de taal te laten werken op de server | De taal draait al op de server | Onbekend en niet naar gekeken |
 | ASR-3 | n.v.t | De taal kan niet uitwisselen met het huidige systeem | De taal kan wel uitwisselen met het huidige systeem, maar kost veel moeite | De taal kan uitwisselen met het systeem | De taal wordt ook voor het huidige systeem gebruikt | n.v.t |  
 
-## Decision detail View
-| Naam | Programmeertaal |
-| --- | --- |
-| Versie | 1 |
-| Status | Decided |
-| Probleem/Issue | In welke taal gaat de applicatie geschreven worden |
-| Decision | PHP 7.4 |
-| Alternatives | NodeJS<br>Java |
-| Argumenten |  | 
-| Gerelateerde beslissingen | |
-| Gerelateerde vereisten | |
-| Geschiedenis | 2020-05-20 PHP 7.4 besloten |
 
 # References 
 
 
 [Systeem overview]: http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/Jelmergu/ReddingsbrigadeDeventerDocs/master/Diagrams/SoftwareArchitectureDocument/Systeem_overview.puml
+[High level Usecase diagram]: http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/Jelmergu/ReddingsbrigadeDeventerDocs/master/Diagrams/SoftwareArchitectureDocument/High_level_usecase_diagram
 [Decision Relationship View]: http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/Jelmergu/ReddingsbrigadeDeventerDocs/master/Diagrams/SoftwareArchitectureDocument/Decision_relationship_view.puml
