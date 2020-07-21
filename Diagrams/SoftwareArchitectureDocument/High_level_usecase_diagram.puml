@@ -29,11 +29,12 @@ Bestuur -u- (Kalender beheren)
 Bestuur -u- (Nieuws beheren)
 Bestuur -u- (Lid inschrijven)
 
-Penningmeester -- (Boekhouding beheren)
+Penningmeester -u- (Boekhouding beheren)
 
 Commissie -- (Kalender beheren)
 Commissie --  (Nieuws beheren)
 Commissie -- (Bewakingen indelen)
+Commissie -- (Website beheren)
 
 Lid -- (Gegevens bekijken)
 Lid -- (Kalender bekijken)

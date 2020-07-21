@@ -22,9 +22,14 @@ class $name <<Rejected>>  {
 
 
 
-class Programmeertaal
+class Serverside_Programmeertaal
 decided("PHP", "PHP 7.4 wordt gebruikt als taal om\nde applicatie in te schrijven")
+Serverside_Programmeertaal <-- PHP
 
-Programmeertaal <-- PHP
+class "Front-end Styling Taal"
+decided("SCSS", "SCSS wordt gebruikt voor\nde opmaak van de applicatie")
+"Front-end Styling Taal" <-- SCSS
+
+
 
 @enduml

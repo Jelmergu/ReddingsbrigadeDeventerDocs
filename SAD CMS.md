@@ -1,22 +1,25 @@
 # Software Architecture Document Reddingsbrigade Deventer
 
 # Inleiding
-In dit document staan het architectureel ontwerp van de website van Reddingsbrigade Deventer. Voor Reddingsbrigade Deventer wordt een volledig vernieuwde website opgezet.   
+In dit document staan het architectureel ontwerp van het content management systeem van de website van Reddingsbrigade Deventer. 
+Dit systeem wordt in verder in dit document Dengdir genoemd, wat een anagram van "redding" is.    
 
 ## Achtergrond
-
+Een aantal jaar geleden is besloten om de website van Reddingsbrigade Deventer te vernieuwen. Het systeem van toen was sterk verouderd 
+en kon zeer slecht op mobiele apparaten(telefoons, tablets) gebruikt worden. Er is toen gekozen om over te stappen naar een site in Wordpress. 
+Deze heeft een tijdje gedraaid totdat er een update van de onderliggende taal werdt toegepast. Hierdoor gingen er een aantal onderdelen kapot. Het bleek dat het lastig 
+was om Wordpress, en het zoiso al vrij moeilijk was om een feature toe te voegen aan Wordpress. 
 
 ## Opdracht
+Het is de bedoeling om een CMS op te zetten welke makkelijk uit te breiden is met nieuwe features, makkelijk te onderhouden is voor 
+de content beheerder en makkelijk te onderhouden is voor de ontwikkelaars. 
 
 # Definities en Afkortingen
 
 | Afkorting | Definitie |
 | --- | --- |
 | RBD | Reddingsbrigade Deventer |
-| TCZR | Technische Commissie Zwemmend Redden |
-| CBH | Commissie Bewaking en Hulpverlening |
-| COW | Commissie Opleiding Waterhulpverlening |
-| Lid | Een lid van RBD |
+| CMS | Content Management Systeem |
 
 # Systeem Overview
 
@@ -37,20 +40,13 @@ In dit hoofdstuk staan de partijen welke belang hebben bij het eindresultaat.
 
 | Code | Stakeholder | Omschrijving |
 |---|---|---|
-| S1 | Bestuur RBD | Het bestuur van RBD. |
-| S2 | Penningmeester RBD | De penningmeester van RBD gebruikt de website voor het uitvoeren van zijn taak. |
-| S3 | Commissie Externe Communicatie  | Het beheer van de website valt onder de commissie externe communicatie. Deze commissie is geïntresseerd in het makkelijk kunnen aanpassen van de website |
-| S4 | CBH | De CBH gebruikt de website als hulpmiddel om bewakingen te plannen en de juiste personen erbij indelen | 
-| S5 | Webmaster | De webmaster beheert de webite van de reddingsbrigade aan de backend. |
-| S6 | Lid | De leden kunnen via de website algemene informatie over de brigade vinden, zoals nieuws en de kalender. Tevens kunnen zij hier hun alle gegevens vinden die bij de reddingsbrigade bekend is |
-| S7 | Externen | Externen kunnen via de website informatie krijgen over de brigade. Deze groep wordt opgesplitst bij het hoofstuk substakeholders. |
-
-### Substakeholders
-| Code | Stakeholder | Omschrijving |
-|---|---|---|
-| S7-A | Potentieel leden | Potentieel leden komen naar de website om informatie te krijgen over de brigade en over mogelijkheden om de sfeer te proeven. |
-| S7-B | Organisatoren | Organisatoren organiseren een evenement en willen de reddingsbrigade hier bij hebben om toezicht te bewaken. Dit kan zijn omdat dit nodig is voor een vergunning of om RBD informatie/voorlichting te laten geven |
-| S7-C |  | 
+| S1 | Contentbeheerder | Contentbeheerders beheren de content van de website. Zij zullen vooral pagina's aanpassen | 
+| S2 | Ontwikkelaar | Ontwikkelaars zullen zich vooral bezig houden met het onderhouden en uitbreiden van het CMS |
+| S3 | Bezoeker | Bezoekers gebruiken het CMS om pagina's te bezoeken. |
+| S4 |  |  |
+| S5 |  |  |
+| S6 |  |  |
+| S7 |  |  |
 
 ## Concerns
 In dit hoofdstuk staan de verschillende concerns van de stakeholders. Deze worden geprioriteerd van 0 tot 10 waarbij 0 lage 
@@ -58,34 +54,37 @@ prioriteit aanduidt en 10 hoge prioriteit
 
 | Code | Stakeholder code | Concern | Prioriteit | 
 | --- | --- | --- | --- |
-| C1 | S |  |  |
-| C2 | S5 | Ik wil kunnen zien wanneer er een fout optreed in de website, zodat ik hier snel op kan reageren | 5 |
-| C3 | S3 | Ik wil de content van de website kunnen aanpassen, zodat ik ervoor kan zorgen dat de website up to date blijft | 8 |
-| C4 | S5 | Ik wil dat de content van de website aangepast kan worden door anderen, zodat ik niet verantwoordelijk ben voor de content van de website | 8 |
-| C5 | S7-A | Ik wil informatie kunnen krijgen over RBD, zodat ik weet wat een reddingsbrigade inhoud | 8 |
-| C6 | S7-A | Ik wil een idee kunnen krijgen over de sfeer bij RBD, zodat ik weet of het bij mij past | 7 |
-| C7 | S7-B | Ik wil informatie kunnen krijgen over de beschikbaarheid van RBD, zodat ik weet of de RBD bij mijn evenement kan bewaken | 6 |
-| C8 | S7-B | Ik wil informatie kunnen krijgen over hoe ik RBD kan benaderen | 7 |
-| C9 | S4 | Ik wil een overzicht hebben van alle evenementen waar voor bewaakt moet worden, zodat ik boten en mensen kan indelen voor deze bewakingen | 4 |
-| C10 | S4 | Ik wil een overzicht hebben van alle mensen met hun kwalificaties en beschikbaarheid voor het bewaken bij evenementen, zodat ik de bewakers kan indelen bij evenementen | 4 |
-| C11 | S4 | Ik wil de bewakers kunnen inlichten over bewakingen waar zij op staan ingedeeld, zodat deze vlekkeloos kunnen verlopen | 4 |
-| C12 | S3 | Ik wil nieuws kunnen delen, zodat externen een idee krijgen over wat RBD doet | 5 |
-| C13 | S6 | Ik wil nieuws over de brigade kunnen zien, zodat ik op de hoogte kan blijven over wat er binnen de brigade zoal wordt gedaan | 5 |
-| C14 | S2 | Ik wil de ledenadministratie kunnen bijhouden en bijwerken, zodat het ledenbestand up to date blijf | 8 |
-| C15 | S2 | Ik wil de mogelijkheid hebben om de boekhouding te doen op de website | 7 |
-| C16 | S1 | Ik wil toegang hebben tot de boekhouding om de penningmeester te kunnen controleren | 8 |
-| C17 | S1 | Ik wil dat leden toegang hebben tot alle gegevens welke over zichzelf bekend zijn bij RBD, zodat de website aan de privacywetgeving voldoet | 10 |
-| C18 | S6 | Ik wil inzicht kunnen krijgen in de gegevens welke bij RBD bekend zijn over mij, zodat ik mijn eigen privacy kan beschermen | 10 |
-| C19 | S6 | Ik wil inzicht kunnen krijgen in de activiteiten van RBD welke er aan staan te komen, zodat ik op de hoogte ben van activiteiten waaraan ik misschien mee wil doen | 5 |
+| C1 | S1 | Ik wil de content van een pagina kunnen aanpassen. | 10 |
+| C2 | S1 | Ik wil nieuwe pagina's kunnen maken. | 10 |
+| C3 | S1 | Ik wil pagina's kunnen verwijderen | 10 |
+| C4 | S1 | Ik wil pagina's kunnen verbergen | 6 |
+| C5 | S1 | Ik wil restricties op pagina's kunnen zetten, zodat er enige afscherming is voor bepaalde pagina's | 6 |
+| C6 | S1 | Ik wil kunnen herleiden door wie een pagina is aangepast | 3 |
+| C7 | S1 | Ik wil kunnen zien wanneer een pagina voor het laatst is aangepast | 3 |
+| C8 | S2 | Ik wil er makkelijk achter kunnen komen waar een fout voorkomt in het systeem | 6 |
+| C9 | S2 | Ik wil dat het systeem makkelijk uitbreidbaar is | 9 |
+| C10 | S2 | Ik wil dat het systeem analyses op zichzelf kan uitvoeren om aan te tonen dat het systeem goed werkt | 2 |
+| C11 | S1 | Ik wil feedback van het systeem krijgen als er problemen zijn met de content of wanneer een pagina niet benaderd kan worden | 4 |
+| C12 | S | Ik wil |  |
+| C13 | S | Ik wil |  |
+| C14 | S | Ik wil |  |
+| C15 | S | Ik wil |  |
+| C16 | S | Ik wil |  |
+| C17 | S | Ik wil |  |
+| C18 | S | Ik wil |  |
+| C19 | S | Ik wil |  |
    
 
 # Architectureel Significante Requirements
+In dit hoofdstuk wordt er gekeken naar de verschillende requirements die voor de architectuur relevant zijn. Op basis van de ISO 25010 
+standaard worden quality attributes aan de verschillende requirements gekoppeld. Hier wordt later in het document dieper op ingegaan en 
+worden keuzes gemaakt om aan de requirements te kunnen voldoen.   
 
 | ASR Code | QA | Omschrijving |
 |---|---|---|
-| ASR-1 | Testability | Applicatie moet testbaar zijn |
-| ASR-2 | Co-existence | De applicatie moet kunnen werken op de bestaande server van RBD |
-| ASR-3 | Interoperability | De applicatie moet data kunnen uitwisselen met het huidige systeem voor zolang de functionaliteiten van het huidige systeem nog niet zijn opgenomen in het nieuwe systeem |
+| ASR-1 |  |  |
+| ASR-2 |  |  |
+| ASR-3 |  |  |
 
 ## High-level Usecases
 
